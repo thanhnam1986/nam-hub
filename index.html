@@ -9,9 +9,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Nam Hub">
   <meta name="description" content="Nam Hub - Quản lý công việc cá nhân, gia đình và con cái">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" href="./icon-192.png">
-  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
   <title>Nam Hub - Cuộc sống & Gia đình</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -246,20 +246,19 @@
   </div>
 
   <script>
+    // Gỡ bỏ hoàn toàn Service Worker nếu từng đăng ký trước đó để tránh lỗi treo cài đặt Android WebAPK
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js", { scope: "./" })
-          .then((registration) => {
-            console.log("ServiceWorker registration successful:", registration.scope);
-          })
-          .catch((error) => {
-            console.error("ServiceWorker registration failed:", error);
-          });
-      });
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      }).catch(() => {});
+    }
+    if ("caches" in window) {
+      caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key)))).catch(() => {});
     }
   </script>
 
   <script src="./js/app.js"></script>
-
 </body>
 </html>
