@@ -63,7 +63,7 @@ async function seedDefaultDataIfEmpty() {
       {
         id: "child_bong",
         memberId: "bong",
-        name: "Bé Bông",
+        name: "Bông",
         school: "Trường Mầm non",
         grade: "Lớp Mẫu giáo Lớn",
         subjects: [
@@ -81,7 +81,7 @@ async function seedDefaultDataIfEmpty() {
       { id: "t_2", title: "Tập gym / chạy bộ", memberId: "nam", category: "personal", dueDate: today, dueTime: "17:30", priority: "normal", recurring: "daily", completed: false, createdAt: new Date().toISOString() },
       { id: "t_3", title: "Chuẩn bị thực đơn gia đình tuần này", memberId: "duyen", category: "personal", dueDate: today, dueTime: "", priority: "normal", recurring: "weekly", completed: false, createdAt: new Date().toISOString() },
       { id: "t_4", title: "Đưa Nhật Anh đi học thêm Toán", memberId: "nhatanh", category: "children", dueDate: today, dueTime: "19:00", priority: "high", recurring: "weekly", completed: false, createdAt: new Date().toISOString() },
-      { id: "t_5", title: "Đón bé Bông tan học", memberId: "bong", category: "children", dueDate: today, dueTime: "16:45", priority: "high", recurring: "daily", completed: false, createdAt: new Date().toISOString() },
+      { id: "t_5", title: "Đón Bông tan học", memberId: "bong", category: "children", dueDate: today, dueTime: "16:45", priority: "high", recurring: "daily", completed: false, createdAt: new Date().toISOString() },
       { id: "t_6", title: "Mua sữa và hoa quả tươi", memberId: "family", category: "shopping", dueDate: today, dueTime: "18:00", priority: "normal", recurring: "none", completed: false, createdAt: new Date().toISOString() }
     ];
     for (const t of defaultTasks) await putItem("tasks", t);

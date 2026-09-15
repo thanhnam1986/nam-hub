@@ -1,23 +1,38 @@
 {
-  "name": "Nam Hub - Quản lý công việc & gia đình",
+  "name": "Nam Hub",
   "short_name": "Nam Hub",
   "description": "Ứng dụng quản lý công việc cá nhân, gia đình, con cái và tài chính",
-  "start_url": "./index.html",
+  "id": "/nam-hub/",
+  "start_url": "/nam-hub/",
+  "scope": "/nam-hub/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#090d16",
-  "theme_color": "#1e293b",
+  "theme_color": "#090d16",
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

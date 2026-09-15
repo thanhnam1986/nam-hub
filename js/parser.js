@@ -21,7 +21,7 @@ export function parseNaturalTask(rawText) {
   if (lower.includes("nhật anh") || lower.includes("nhat anh") || lower.includes("con trai")) {
     memberId = "nhatanh";
     category = "children";
-  } else if (lower.includes("bông") || lower.includes("bong") || lower.includes("bé bông") || lower.includes("con gái")) {
+  } else if (lower.includes("bông") || lower.includes("bong") || lower.includes("con gái")) {
     memberId = "bong";
     category = "children";
   } else if (lower.includes("duyên") || lower.includes("duyen") || lower.includes("vợ") || lower.includes("mẹ")) {

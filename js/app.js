@@ -28,10 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   bindGlobalEvents();
   renderCurrentView();
 
-  // Đăng ký Service Worker
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
-  }
+// Service Worker đã được đăng ký trực tiếp từ index.html
 });
 
 function renderDateHeader() {

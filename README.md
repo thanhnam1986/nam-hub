@@ -13,7 +13,7 @@
   - 🏠 **Gia đình** (Mua sắm, việc nhà...)
   - 💰 **Tài chính** (Các khoản điện, nước, internet sắp đến hạn)
 - **Task lặp lại thông minh**: Hàng ngày, hàng tuần, hàng tháng, hàng năm. Khi tick hoàn thành, hệ thống tự động sinh việc cho chu kỳ tiếp theo.
-- **Hồ sơ học tập con cái**: Quản lý lịch học thêm, môn học, bài tập và mục tiêu cho Nhật Anh và bé Bông.
+- **Hồ sơ học tập con cái**: Quản lý lịch học thêm, môn học, bài tập và mục tiêu cho Nhật Anh và Bông.
 - **Danh sách mua sắm**: Thêm nhanh đồ cần mua tại chợ/siêu thị, tick gạch bỏ tiện lợi.
 - **Lịch tuần gia đình**: Giao diện dạng tuần trực quan, bao quát toàn bộ lịch trình.
 - **Hoạt động 100% ngoại tuyến (Offline-first)**: Toàn bộ dữ liệu lưu trữ bền vững trên điện thoại qua IndexedDB, không phụ thuộc vào Internet.
