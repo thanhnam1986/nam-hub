@@ -167,7 +167,7 @@ export async function clearStore(storeName) {
 
 export async function exportBackupJSON() {
   const backup = {
-    app: "Nam Hub",
+    app: "Thành Nam",
     version: "1.0",
     exportedAt: new Date().toISOString(),
     data: {}
@@ -183,7 +183,7 @@ export async function exportBackupJSON() {
   const a = document.createElement("a");
   const dateStr = getTodayStr().replace(/-/g, "");
   a.href = url;
-  a.download = `NamHub_Backup_${dateStr}.json`;
+  a.download = `ThanhNam_Backup_${dateStr}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -194,7 +194,7 @@ export async function importBackupJSON(jsonString) {
   try {
     const parsed = JSON.parse(jsonString);
     if (!parsed.data || typeof parsed.data !== "object") {
-      throw new Error("Tệp sao lưu không đúng định dạng của Nam Hub.");
+      throw new Error("Tệp sao lưu không đúng định dạng của Thành Nam.");
     }
 
     for (const s of STORES) {

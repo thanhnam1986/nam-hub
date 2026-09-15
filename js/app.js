@@ -173,7 +173,7 @@ async function clearStore(storeName) {
 
 async function exportBackupJSON() {
   const backup = {
-    app: "Nam Hub",
+    app: "Thành Nam",
     version: "1.0",
     exportedAt: new Date().toISOString(),
     data: {}
@@ -189,7 +189,7 @@ async function exportBackupJSON() {
   const a = document.createElement("a");
   const dateStr = getTodayStr().replace(/-/g, "");
   a.href = url;
-  a.download = `NamHub_Backup_${dateStr}.json`;
+  a.download = `ThanhNam_Backup_${dateStr}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -200,7 +200,7 @@ async function importBackupJSON(jsonString) {
   try {
     const parsed = JSON.parse(jsonString);
     if (!parsed.data || typeof parsed.data !== "object") {
-      throw new Error("Tệp sao lưu không đúng định dạng của Nam Hub.");
+      throw new Error("Tệp sao lưu không đúng định dạng của Thành Nam.");
     }
 
     for (const s of STORES) {
@@ -766,7 +766,8 @@ function bindGlobalEvents() {
   const btnSaveModal = document.getElementById("btn-save-task-detail");
   const btnDeleteModal = document.getElementById("btn-delete-task-detail");
 
-  if (btnCloseModal) btnCloseModal.addEventListener("click", () => modalTask.classList.remove("open"));
+  if (btnCloseModal) btnCloseModal.addEventListener("click", () => { modalTask.classList.remove("open"); editingTaskId = null; });
+  if (modalTask) modalTask.addEventListener("click", (e) => { if (e.target === modalTask) { modalTask.classList.remove("open"); editingTaskId = null; } });
   if (btnSaveModal) btnSaveModal.addEventListener("click", handleSaveTaskDetail);
   if (btnDeleteModal) btnDeleteModal.addEventListener("click", handleDeleteTaskDetail);
 
@@ -1238,10 +1239,18 @@ function openTaskDetailModal(task) {
 }
 
 async function handleSaveTaskDetail() {
-  if (!editingTaskId) return;
+  const modal = document.getElementById("modal-task-detail");
+  if (!editingTaskId) {
+    if (modal) modal.classList.remove("open");
+    return;
+  }
   const allTasks = await getTasks();
   const task = allTasks.find((t) => t.id === editingTaskId);
-  if (!task) return;
+  if (!task) {
+    if (modal) modal.classList.remove("open");
+    editingTaskId = null;
+    return;
+  }
 
   task.title = document.getElementById("modal-task-title").value.trim() || task.title;
   task.memberId = document.getElementById("modal-task-member").value;
@@ -1252,17 +1261,22 @@ async function handleSaveTaskDetail() {
   task.note = document.getElementById("modal-task-note").value.trim();
 
   await saveTask(task);
-  document.getElementById("modal-task-detail").classList.remove("open");
+  if (modal) modal.classList.remove("open");
   editingTaskId = null;
   showToast("✓ Đã lưu thay đổi");
   renderCurrentView();
 }
 
 async function handleDeleteTaskDetail() {
-  if (!editingTaskId) return;
-  if (confirm("Anh có chắc muốn xóa công việc này không?")) {
+  const modal = document.getElementById("modal-task-detail");
+  if (!editingTaskId) {
+    if (modal) modal.classList.remove("open");
+    return;
+  }
+  const confirmed = typeof window.__SKIP_CONFIRM__ !== "undefined" ? true : confirm("Anh có chắc muốn xóa công việc này không?");
+  if (confirmed) {
     await removeTask(editingTaskId);
-    document.getElementById("modal-task-detail").classList.remove("open");
+    if (modal) modal.classList.remove("open");
     editingTaskId = null;
     showToast("Đã xóa công việc");
     renderCurrentView();
